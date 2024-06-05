@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContactItem from './ContactItem';
 import styled from 'styled-components';
+import ContactItem from './ContactItem';
 
 const List = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
 `;
 
 const ContactList = ({ contacts, onDeleteContact }) => (
@@ -28,7 +29,7 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    }).isRequired
+    })
   ).isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
