@@ -28,15 +28,11 @@ const SubTitle = styled.h2`
 `;
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem('contacts');
+    return savedContacts ? JSON.parse(savedContacts) : [];
+  });
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    const storedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (storedContacts) {
-      setContacts(storedContacts);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
